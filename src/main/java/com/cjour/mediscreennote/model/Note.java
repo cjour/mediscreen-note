@@ -1,33 +1,33 @@
 package com.cjour.mediscreennote.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigInteger;
+import java.util.Date;
 
 @Document(collection ="notes")
 public class Note {
 
     @Id
-    private BigInteger ID;
+    private ObjectId id;
     private Integer patId;
-    //private Date creationDate;
     private String description;
 
     public Note() {}
 
-    public Note(BigInteger ID, Integer patId, String description) {
-        this.ID = ID;
+    public Note(ObjectId id, Integer patId, String description) {
+        this.id = id;
         this.patId = patId;
         this.description = description;
     }
 
-    public BigInteger getID() {
-        return ID;
+    public ObjectId getId() {
+        return id;
     }
 
-    public void setID(BigInteger ID) {
-        this.ID = ID;
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public Integer getPatId() {
@@ -37,14 +37,6 @@ public class Note {
     public void setPatId(Integer patId) {
         this.patId = patId;
     }
-
-//    public Date getCreationDate() {
-//        return creationDate;
-//    }
-//
-//    public void setCreationDate(Date creationDate) {
-//        this.creationDate = creationDate;
-//    }
 
     public String getDescription() {
         return description;
