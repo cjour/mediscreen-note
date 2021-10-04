@@ -4,29 +4,30 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 @Document(collection ="notes")
 public class Note {
 
     @Id
-    private ObjectId id;
+    private String id;
     private Integer patId;
     private String description;
 
     public Note() {}
 
-    public Note(ObjectId id, Integer patId, String description) {
+    public Note(String id, Integer patId, String description) {
         this.id = id;
         this.patId = patId;
         this.description = description;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

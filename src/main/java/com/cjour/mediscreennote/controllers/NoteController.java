@@ -2,16 +2,12 @@ package com.cjour.mediscreennote.controllers;
 
 import com.cjour.mediscreennote.model.Note;
 import com.cjour.mediscreennote.service.INoteService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -36,6 +32,12 @@ public class NoteController {
         return new ResponseEntity<>(listOfNotes, HttpStatus.OK);
     }
 
+    @GetMapping("/patientNote/{id}")
+    public ResponseEntity<List<Note>> getNotesByFamilyName(@PathVariable String familyName){
+        List<Note> listOfNotes = noteService.findNotesByFamilyName(familyName);
+        return new ResponseEntity<>(listOfNotes, HttpStatus.OK);
+    }
+
     @PostMapping("/patientNote/add")
     public ResponseEntity<Note> addANote(@RequestBody Note note){
         Note noteCreated = noteService.create(note);
@@ -43,13 +45,13 @@ public class NoteController {
     }
 
     @PutMapping("/patientNote/update/{id}")
-    public ResponseEntity<Note> updateANote(@PathVariable ObjectId id, @RequestBody Note note){
-       Note noteUpdated = noteService.update(id, note);
+    public ResponseEntity<Note> updateANote(@PathVariable String id, @RequestBody Note note){
+        Note noteUpdated = noteService.update(id, note);
         return new ResponseEntity<>(noteUpdated, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/patientNote/delete/{id}")
-    public ResponseEntity<Note> deleteANote(@PathVariable ObjectId id){
+    public ResponseEntity<Note> deleteANote(@PathVariable String id){
         noteService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

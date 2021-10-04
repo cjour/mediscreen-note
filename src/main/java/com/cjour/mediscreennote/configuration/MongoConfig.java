@@ -13,7 +13,7 @@ public class MongoConfig {
      */
     public @Bean
     MongoClient mongoClient() {
-        return MongoClients.create("mongodb://localhost:27017/mediscreen-notes");
+        return MongoClients.create();
     }
 }
 

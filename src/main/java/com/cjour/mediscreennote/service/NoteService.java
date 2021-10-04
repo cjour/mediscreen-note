@@ -2,12 +2,10 @@ package com.cjour.mediscreennote.service;
 
 import com.cjour.mediscreennote.model.Note;
 import com.cjour.mediscreennote.repository.NoteRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,13 +22,13 @@ public class NoteService implements INoteService {
 
     public List<Note> findNotesById(Integer patientId) {
         List<Note> listOfNote = this.findAll();
-        List<Note> listOfNoteForThisUUID = new ArrayList<>();
+        List<Note> listOfNoteForThisId = new ArrayList<>();
         for (Note note : listOfNote) {
             if (note.getPatId().equals(patientId)){
-                listOfNoteForThisUUID.add(note);
+                listOfNoteForThisId.add(note);
             }
         }
-        return listOfNoteForThisUUID;
+        return listOfNoteForThisId;
     }
 
     @Override
@@ -39,7 +37,7 @@ public class NoteService implements INoteService {
     }
 
     @Override
-    public Note update(ObjectId id, Note note) {
+    public Note update(String id, Note note) {
         Optional<Note> noteToUpdate;
         if (note != null) {
             noteToUpdate = noteRepository.findById(id);
@@ -53,7 +51,7 @@ public class NoteService implements INoteService {
 
 
     @Override
-    public void delete(ObjectId id) {
+    public void delete(String id) {
         noteRepository.deleteById(id);
     }
 }
