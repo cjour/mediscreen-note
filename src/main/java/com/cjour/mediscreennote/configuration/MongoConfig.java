@@ -11,9 +11,9 @@ public class MongoConfig {
     /*
      * Use the standard Mongo driver API to create a com.mongodb.client.MongoClient instance.
      */
-    public @Bean
+   /* public @Bean
     MongoClient mongoClient() {
         return MongoClients.create();
-    }
+    }*/
 }
 

@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  #service 1: definition of mongodb database
+  db:
+    image: mongo:latest
+    container_name: mongo-db2
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - "./mongodb/data/db:/data/db:rw"
+
+  #service 2: definition of note microservice
+  mediscreen:                           #it is just a name, which will be used only in this file.
+    image: mediscreen-note              #name of the image after dockerfile executes
+    container_name: mediscreen-note     #name of the container created from docker image
+    build:
+      context: .                        #docker file path (. means root directory)
+      dockerfile: Dockerfile            #docker file name
+    ports:
+      - 8082:8088                       #docker container port with your os port
+    restart: always
+    depends_on :
+      - db

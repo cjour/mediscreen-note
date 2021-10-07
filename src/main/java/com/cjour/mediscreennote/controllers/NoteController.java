@@ -32,11 +32,17 @@ public class NoteController {
         return new ResponseEntity<>(listOfNotes, HttpStatus.OK);
     }
 
-    @GetMapping("/patientNote/{id}")
-    public ResponseEntity<List<Note>> getNotesByFamilyName(@PathVariable String familyName){
-        List<Note> listOfNotes = noteService.findNotesByFamilyName(familyName);
-        return new ResponseEntity<>(listOfNotes, HttpStatus.OK);
+    @GetMapping("/patientNote/note/{id}")
+    public ResponseEntity<Note> getNotes(@PathVariable String id){
+        Note note = noteService.findNoteById(id);
+        return new ResponseEntity<>(note, HttpStatus.OK);
     }
+
+//    @GetMapping("/patientNote/{id}")
+//    public ResponseEntity<List<Note>> getNotesByFamilyName(@PathVariable String familyName){
+//        List<Note> listOfNotes = noteService.findNotesByFamilyName(familyName);
+//        return new ResponseEntity<>(listOfNotes, HttpStatus.OK);
+//    }
 
     @PostMapping("/patientNote/add")
     public ResponseEntity<Note> addANote(@RequestBody Note note){

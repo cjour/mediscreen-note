@@ -20,14 +20,23 @@ public class NoteService implements INoteService {
         return noteRepository.findAll();
     }
 
+    @Override
+    public Note findNoteById(String id) {
+        Optional<Note> note = noteRepository.findById(id);
+        return note.orElse(null);
+    }
+
     public List<Note> findNotesById(Integer patientId) {
         List<Note> listOfNote = this.findAll();
         List<Note> listOfNoteForThisId = new ArrayList<>();
-        for (Note note : listOfNote) {
-            if (note.getPatId().equals(patientId)){
-                listOfNoteForThisId.add(note);
+            for (Note note : listOfNote) {
+                if (note != null){
+                    if (note.getPatId().equals(patientId)){
+                        listOfNoteForThisId.add(note);
+                    }
+                }
             }
-        }
+
         return listOfNoteForThisId;
     }
 

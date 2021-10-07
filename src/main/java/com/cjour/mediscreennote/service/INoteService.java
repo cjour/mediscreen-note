@@ -9,6 +9,8 @@ public interface INoteService {
 
     List<Note> findAll();
 
+    Note findNoteById(String id);
+
     List<Note> findNotesById(Integer id);
 
     Note create(Note note);
