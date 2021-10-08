@@ -11,7 +11,7 @@ REST API allowing CRUD operation of Note on noSql database.
 ## Deployment :
 Make sure that Docker and Maven are installed on your system. <br />
 
-run the CLI command : ``$ ./mvnw package && java -jar target/mediscreen-risk-evaluator.jar`` <br />
+run the CLI command : ``$ ./mvnw package && java -jar target/mediscreen-note.jar`` <br />
 
 run the CLI command : ``$ docker-compose up --build -d``<br />
 
