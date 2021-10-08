@@ -16,4 +16,5 @@ run the CLI command : ``$ ./mvnw package && java -jar target/mediscreen-note.jar
 run the CLI command : ``$ docker-compose up --build -d``<br />
 
 ### Code coverage (JaCoCo report)
-![Screenshot 2021-10-07 at 10-25-07 mediscreen-note](https://user-images.githubusercontent.com/61873476/136410625-a8ed4a8c-3974-4403-837b-21ca0fd7df7d.png)
+
+![Screenshot 2021-10-08 at 13-28-35 mediscreen-note](https://user-images.githubusercontent.com/61873476/136549119-14abe768-8f0e-473e-b2c7-83b71b075bde.png)
